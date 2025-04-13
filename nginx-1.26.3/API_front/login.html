@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      animation: floatIn 1s ease forwards;
+      position: relative;
+      width: 300px;
+    }
+
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-box h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .input-group input {
+      width: 85%;
+      padding: 10px 10px 10px 40px;
+      background: transparent;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      color: #fff;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-group label {
+      position: absolute;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+
+    .input-group input:focus ~ label,
+    .input-group input:not(:placeholder-shown) ~ label {
+      top: -10px;
+      left: 20px;
+      font-size: 12px;
+      color: #00d2ff;
+    }
+
+    .input-group input:focus {
+      border-color: #00d2ff;
+      box-shadow: 0 0 8px #00d2ff;
+    }
+
+    .password-show {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      cursor: pointer;
+    }
+
+    .password-show input[type="checkbox"] {
+      display: none;
+    }
+
+    .password-show label {
+      width: 20px;
+      height: 20px;
+      display: block;
+      background-image: url("data:image/svg+xml,%3Csvg fill='%23fff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7zm0 12c-2.761 0-5-2.239-5-5s2.239-5 5-5c2.762 0 5 2.239 5 5s-2.238 5-5 5z'/%3E%3Cpath d='M12 9a3 3 0 100 6 3 3 0 000-6z'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .input-group input[type="password"]:focus {
+      text-shadow: 0 0 6px #ff1493;
+    }
+
+    /* Show password trick */
+    #showPass:checked ~ .input-group input[type="password"] {
+      -webkit-text-security: none;
+      
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 30px;
+      background: #00d2ff;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background: #009acd;
+      box-shadow: 0 0 10px #00d2ff;
+    }
+
+    .password-show img {
+      width: 20px;
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+
+    .password-show:hover img {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form class="login-box" onsubmit="handleLogin(event)">
+    <h2>Login</h2>
+
+    <div class="input-group">
+        <input type="text" id="username" name="username" autocomplete="username" required>
+
+      <label for="username">Username</label>
+    </div>
+
+    <input type="checkbox" id="showPass" hidden>
+
+    <div class="input-group">
+        <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+      <label for="password">Password</label>
+      
+      <div class="password-show" onclick="togglePassword()">
+        <img id="eyeIcon" src="https://img.icons8.com/ios-filled/50/ffffff/visible.png" alt="Show Password">
+      </div>
+    </div>
+
+    <button id="loginForm" type="submit">Login</button>
+
+
+    
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>

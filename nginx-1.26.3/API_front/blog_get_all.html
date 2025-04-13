@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Blog</title>
+    
+    <style>
+        /* Add some basic styling for the page and the data display */
+        #dataContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .post {
+            background-color: lightgray;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+        .post:hover {
+            transform: scale(1.05);
+        }
+        .loading {
+            font-size: 30px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="dataContainer">
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner"></i> Loading...
+        </div>
+    </div>
+
+    <script src="script.js" ></script>
+</body>
+</html>

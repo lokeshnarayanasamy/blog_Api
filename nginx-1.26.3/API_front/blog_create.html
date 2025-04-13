@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      animation: bgMove 10s linear infinite;
+    }
+
+    @keyframes bgMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      backdrop-filter: blur(15px);
+      width: 500px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(-50px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    label {
+      color: white;
+      display: block;
+      margin: 20px 0 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      resize: none;
+    }
+
+    textarea {
+      height: 120px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    button, a.button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: white;
+      color: #333;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before, a.button::before {
+      content: "";
+      position: absolute;
+      left: -50%;
+      top: 0;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, #89f7fe, #66a6ff);
+      transform: skewX(-20deg);
+      transition: 0.5s;
+      z-index: 0;
+    }
+
+    button:hover::before, a.button:hover::before {
+      left: 0;
+    }
+
+    button span, a.button span {
+      position: relative;
+      z-index: 1;
+    }
+    #Result{
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      color: green !important;
+    }
+  </style>
+</head>
+<body>
+  <form class="container" action="/create_blog/" method="POST">
+    <h2>Create New Blog</h2>
+
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="content">Content</label>
+    <textarea id="content" name="content" required></textarea>
+    <button type="button" onclick="Blog_posts()" ><span>Create Blog</span></button>
+    
+    <div class="buttons">
+      
+      <a href="/blog_get_all/" class="button"><span>Get All Blogs</span></a>
+    </div>
+    <br>
+
+    <div id="Result"></div>
+
+    <br>
+  </form>
+
+  
+
+  <script  src="script.js"></script>
+</body>
+</html>
